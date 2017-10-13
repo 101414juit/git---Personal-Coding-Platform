@@ -1,0 +1,62 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class BalancedContest {
+
+	public static void main(String[] args) throws IOException {
+		
+		Scanner sc = new Scanner(System.in);
+		
+
+		int cakewalk=0,hard=0;
+		
+		/*String x= sc.nextLine();
+		System.out.println(x);
+		System.out.println(sc.nextLine());
+		*/
+		int T = sc.nextInt();
+		
+		
+		if(T>=1 && T<=500){
+			String s1=sc.nextLine();
+			String[] s=s1.split(" ");
+			int N = (int)(s[0]);
+			if(N>=1 && N<=500){
+				int P = (int)Integer.parseInt(s[1].toString());
+				if(P>=1 && P<=100000000){
+					s=sc.next().split(" ");
+					if(s.length>=N)
+						return;
+					for(int i=0;i<s.length;i++){
+						if((int)Integer.parseInt(s[i])>=1 &&(int)Integer.parseInt(s[i])<=P ){
+							if(min(P,(int)Integer.parseInt(s[i])))
+								cakewalk++;
+							if(max(P,(int)Integer.parseInt(s[i])))
+								hard++;
+						}
+						if(cakewalk ==1 && hard==2)
+							System.out.println("yes");
+						else System.out.println("no");
+					}
+					
+					
+				}
+			}
+			
+		}
+
+	}
+	
+	static boolean max(int P, int solvers) {
+		if(solvers<=P/10)
+			return true;
+		return false;
+	}
+
+	static boolean min(int P, int solvers){
+		if(P/2>=solvers)
+			return true;
+		return false;
+	}
+
+}
