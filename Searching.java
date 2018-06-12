@@ -85,13 +85,18 @@ public class Searching {
 	 * Pre-requisite : Array needs to be sorted.
 	 */
 	public static int jumpSearch(int[] input, int key){
-
+ 
 		sortInIncreasingOrderUsingBubbleSort(input);
 		int blockSize= (int) Math.floor(Math.sqrt(input.length));
 		int m=1;
-		while(m*blockSize <=input.length &&key>input[m*blockSize] )
+		while(m*blockSize <=input.length && key>=input[m*blockSize] ){
+			if(key==input[m*blockSize]){
+				System.out.println("value exists");
+				return 1;
+			}	
 			m++;
-		for(int i=(m-1)*blockSize+1;i<m*blockSize;i++)
+		}
+		for(int i=(m-1)*blockSize; i< ( m*blockSize > input.length ? input.length : m*blockSize); i++)
 			if(input[i]==key){
 				System.out.println("value exists");
 				return 1;
